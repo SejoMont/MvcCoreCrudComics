@@ -1,0 +1,42 @@
+﻿@model List<Comic>
+<h1>Buscar Comics</h1>
+<p>
+    <a asp-controller="Comics" asp-action="Index">
+        Back to Index
+    </a>
+</p>
+
+<form method="post">
+    <div class="form-group">
+        <label for="idcomic">Seleccione un cómic</label>
+        <select class="form-control" name="idcomic" id="idcomic">
+            @foreach (Comic com in (List<Comic>)ViewData["AllComics"])
+            {
+                <option value="@com.IdComic">@com.Nombre</option>
+            }
+        </select>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-outline-warning">
+        Buscar comic
+    </button>
+</form>
+
+<h2 style="color:red">@ViewData["MENSAJE"]</h2>
+
+@if (Model != null)
+{
+    @foreach (Comic com in Model)
+    {
+        <div class="card mb-3 text-center">
+            <img src="@com.Imagen" class="card-img-top" style="width: 30%; margin: 0 auto">
+            <div class="card-body">
+                <h5 class="card-title">@com.Nombre</h5>
+                <p class="card-text">@com.Descripcion</p>
+                <a asp-controller="Comics" asp-action="Delete" asp-route-idcomic="@com.IdComic" class="btn btn-outline-danger" style="width: 60%; margin: 0 auto">
+                    Borrar
+                </a>
+            </div>
+        </div>
+    }
+}

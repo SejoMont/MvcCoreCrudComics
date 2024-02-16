@@ -1,0 +1,22 @@
+﻿﻿<h1>New Comic Lambda</h1>
+
+<p>
+    <a asp-controller="Comics" asp-action="Index">
+        Back to Index
+    </a>
+</p>
+
+<form method="post">
+    <label>Nombre:</label>
+    <input type="text" class="form-control" name="nombre" required/>
+
+    <label>Imagen:</label>
+    <input type="text" class="form-control" name="imagen" required/>
+
+    <label>Descripcion:</label>
+    <input type="text" class="form-control" name="descripcion" required/>
+
+    <button class="btn btn-outline-info">
+        Create Comic
+    </button>
+</form>

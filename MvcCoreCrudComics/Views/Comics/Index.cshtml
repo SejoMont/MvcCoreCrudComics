@@ -1,0 +1,34 @@
+﻿@model List<Comic>
+
+<p>
+    <a asp-controller="Comics" asp-action="CreateLambda" class="btn btn-outline-success">
+        Nuevo Comic Lambda
+    </a>
+    |
+    <a asp-controller="Comics" asp-action="CreateProcedure" class="btn btn-outline-success">
+        Nuevo Comic Procedure
+    </a>
+    |
+    <a asp-controller="Comics" asp-action="Buscador" class="btn btn-outline-info">
+        Buscar 
+    </a>
+</p>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (Comic com in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="@com.Imagen" class="card-img-top" style="width: 200px; margin:0 auto">
+                <div class="card-body">
+                    <h5 class="card-title">@com.Nombre</h5>
+                    <p><b>ID: @com.IdComic</b></p>
+                    <p class="card-text">@com.Descripcion</p>
+                    <a asp-controller="Comics" asp-action="Delete" asp-route-idcomic="@com.IdComic" class="btn btn-outline-danger" style="width: 100%; margin: 0 auto">
+                        Borrar
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
